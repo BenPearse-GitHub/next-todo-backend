@@ -1,16 +1,11 @@
 require("dotenv").config();
 import { Request, Response } from "express";
-const { Pool } = require("pg");
 
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 3000;
-
-// PostgreSQL client pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+import { pool } from "./db/index";
 
 app.use(cors());
 app.use(express.json()); // Enable JSON body parsing
